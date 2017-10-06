@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Grokking</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <style media="screen">
+      .area-group {
+        margin-top: 20px;
+      }
+
+      .area {
+        border: 1px solid white;
+        background-color: #6aaff9;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .area .title {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: white;
+      }
+
+      .topic {
+        border: 1px solid;
+        border-radius: 5px;
+        background-color: yellow;
+        margin: 2px;
+        max-width: calc(100% / 3 - 4px);
+        min-height: 50px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        font-size: 10px;
+        color: black;
+
+        cursor: pointer;
+      }
+
+      .topic.chosen {
+        background-color: #2257ce;
+        color: white;
+      }
+
+      .body-wrapper {
+        margin: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h3>Software Engineer Knowledge Area</h3>
+      <p>
+        Dựa theo kinh nghiệm cá nhân, một bạn CTO tổng hợp những mảng kiến thức cần thiết dựa trên kinh nghiệm của mình.
+        Các bạn thử đánh dấu xem mình nắm được bao nhiêu trong những mảng kiến thức này?
+
+        Đọc bài viết gốc ở đây: <a href="#">Link</a>
+      </p>
+    </div>
+
+    <div class="container vote-container">
+      <div class="row area-group">
+        <div class="col-sm-4 area" id="area-1"></div>
+        <div class="col-sm-4 area" id="area-2"> </div>
+        <div class="col-sm-4 area" id="area-3"> </div>
+      </div>
+
+      <div class="row area-group">
+        <div class="col-sm-12 area" id="area-4"> </div>
+      </div>
+
+      <div class="row area-group">
+        <div class="col-sm-6 area" id="area-5"> </div>
+        <div class="col-sm-6 area" id="area-6"> </div>
+      </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="choose-topic-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <ul>
+                    <li>Level 0</li>
+                    <li>Level 1</li>
+                    <li>Level 2</li>
+                    <li>Level 3</li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <script type="text/javascript">
+      var data = [
+        {
+            "id": "area-1",
+            "name": "Software Process",
+            "topics": [
+                {
+                    "name": "TDD",
+                    "size": 1,
+                    "statistic": {
+                      "level_0": 0,
+                      "level_1": 0,
+                      "level_2": 0,
+                      "level_3": 0
+                    }
+                },
+                {
+                    "name": "Agile",
+                    "size": 1
+                },
+                {
+                    "name": "Scrum",
+                    "size": 1
+                },
+            ]
+        },
+        {
+            "id": "area-2",
+            "name": "Technologies",
+            "topics": [
+            ]
+        },
+        {
+            "id": "area-3",
+            "name": "Programming Skills",
+            "topics": [
+                {
+                    "name": "Programming Proficiency",
+                    "size": 1
+                },
+                {
+                    "name": "Code Refactoring",
+                    "size": 1
+                },
+                {
+                    "name": "Code Quality",
+                    "size": 1
+                },
+            ]
+        },
+        {
+            "id": "area-4",
+            "name": "Technical Framework Of Thinking",
+            "topics": [
+                {
+                    "name": "Critical Thinking Skills",
+                    "size": 1
+                },
+                {
+                    "name": "Problem Solving Skills",
+                    "size": 1
+                },
+                {
+                    "name": "system Design Skills",
+                    "size": 1
+                },
+            ]
+        },
+        {
+            "id": "area-5",
+            "name": "Algorithm & Data Structures",
+            "topics": [
+                {
+                    "name": "Binary Tree",
+                    "size": 1
+                },
+                {
+                    "name": "Graph",
+                    "size": 1
+                },
+                {
+                    "name": "Queue",
+                    "size": 1
+                },
+            ]
+        },
+        {
+            "id": "area-6",
+            "name": "Computer Science Concepts",
+            "topics": [
+                {
+                    "name": "Operating System",
+                    "size": 1
+                },
+                {
+                    "name": "Thread",
+                    "size": 1
+                },
+                {
+                    "name": "Process",
+                    "size": 1
+                },
+                {
+                    "name": "Event-loop",
+                    "size": 1
+                },
+            ]
+        },
+      ]
+      var $modal = $("#choose-topic-modal");
+
+      // Render area
+      var renderArea = function(areaId, data, dataIndex) {
+        topicData = data["topics"]
+        var area = d3.select(".vote-container")
+                                      .select(".area#" + areaId)
+                                      .append("div").attr("class", "title").text(data["name"])
+                                      .append("div").attr("class", "body-wrapper row")
+                                      .selectAll(".topic")
+                                      .data(topicData);
+
+            area.enter().append("div")
+                        .attr("class", "topic col-sm-4")
+                        .attr("topic-index", function(d, i) {   // use this index to pour data to statistic modal
+                          return dataIndex + '-' + i;
+                        })
+                        .text(function(d) { return d.name; });
+      }
+
+      // Render areas
+      $.each(data, function(index, areaData) {
+        renderArea(areaData["id"], areaData, index);
+      });
+
+      // Click on topics
+      $(".topic").on('click', function() {
+        // open statistic modal
+        $modal.modal("show", this);
+
+        // highlight
+        $(this).addClass('chosen');
+      });
+
+      // Display modal
+      var renderModal = function(areaData, topicData) {
+        $modal.find(".modal-title").html(areaData["name"] + " > " + topicData["name"])
+      };
+
+      $modal.on('show.bs.modal', function(e) {
+        var [areaIndex, topicIndex] = $(e.relatedTarget).attr("topic-index").split('-');
+        areaData = data[areaIndex];
+        topicData = data[areaIndex]["topics"][topicIndex];
+        renderModal(areaData, topicData);
+      });
+
+      $(".topic[topic-index=0-0]").trigger("click");
+    </script>
+
+  </body>
+</html>
