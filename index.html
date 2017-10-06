@@ -10,7 +10,7 @@
 
     <style media="screen">
       .area-group {
-        margin-top: 20px;
+        margin-top: 0px;
       }
 
       .area {
@@ -100,18 +100,25 @@
 
     <div class="container vote-container">
       <div class="row area-group">
-        <div class="col-sm-4 area" id="area-1"></div>
-        <div class="col-sm-4 area" id="area-2"> </div>
-        <div class="col-sm-4 area" id="area-3"> </div>
+        <div class="col-sm-12 area" id="area-technologies"> </div>
       </div>
 
       <div class="row area-group">
-        <div class="col-sm-12 area" id="area-4"> </div>
+        <div class="col-sm-3 area" id="area-software-requirements"> </div>
+        <div class="col-sm-3 area" id="area-software-design"> </div>
+        <div class="col-sm-1 area" id="area-software-construction"> </div>
+        <div class="col-sm-1 area" id="area-software-testing"> </div>
+        <div class="col-sm-1 area" id="area-software-configuration-management"> </div>
+        <div class="col-sm-1 area" id="area-software-engineering-management"> </div>
+        <div class="col-sm-1 area" id="area-software-engineering-process"> </div>
+        <div class="col-sm-1 area" id="area-software-engineering-models-and-methods"> </div>
+        <div class="col-sm-1 area" id="area-software-quality"> </div>
       </div>
 
       <div class="row area-group">
-        <div class="col-sm-6 area" id="area-5"> </div>
-        <div class="col-sm-6 area" id="area-6"> </div>
+        <div class="col-sm-4 area" id="area-engineering-foundation"> </div>
+        <div class="col-sm-4 area" id="area-computing-foundation"> </div>
+        <div class="col-sm-4 area" id="area-mathematics-foundation"> </div>
       </div>
     </div>
 
@@ -203,12 +210,13 @@
                           return dataIndex + '-' + i;
                         })
                         .attr("title", function(d,i) {
-                          // show statistic's text
-                          var t = "<b>Kết quả tham khảo từ cộng đồng</b>\n\n";
-                          t += "Chưa biết về kỹ năng này: " + d.statistic.level_0 + " người\n";
-                          t += "Đã biết về nó, nhưng chưa dùng bao giờ: " + d.statistic.level_1 + " người\n";
-                          t += "Đã làm qua, nhưng chưa thành thạo: " + d.statistic.level_2 + " người\n";
-                          t += "I grokked this: " + d.statistic.level_3 + " người\n";
+
+                          // show statistic's text in tooltip
+                          var t = "Kết quả tham khảo từ cộng đồng\n\n";
+                          t += "Chưa biết về kỹ năng này: " + (d.statistic.level_0 || 0) + " người\n";
+                          t += "Đã biết về nó, nhưng chưa dùng bao giờ: " + (d.statistic.level_1 || 0) + " người\n";
+                          t += "Đã làm qua, nhưng chưa thành thạo: " + (d.statistic.level_2 || 0) + " người\n";
+                          t += "I grokked this: " + (d.statistic.level_3 || 0) + " người\n";
 
                           return t;
                         })   
@@ -231,22 +239,27 @@
         });
 
          $(".topic").on('mouseleave', function() {
-          // $(this).tooltip('hide');
+            $(this).tooltip('hide'); 
         });
       }
 
       // Fetch areas from api
-      var xhr = $.get('https://private-a54a7-semap.apiary-mock.com/map', function(d, status, xhr) {
+      var xhr = $.get('mock_data.json', function(d, status, xhr) {
+
+        console.log(d);
         // Render areas
         window.data = d["areas"];
         $.each(window.data, function(index, areaData) {
           renderArea(areaData["id"], areaData, index);
+
+          console.log('bar');
         });
 
+        console.log('foo');
         addTopicsClickEvent();
       })
       .fail(function(a, b, c) {
-        alert("error");
+        console.log(a,b,c);
       })
 
       // Display modal
@@ -273,8 +286,6 @@
         topicData = data[areaIndex]["topics"][topicIndex];
         renderModal(areaData, topicData);
       });
-
-      // $(".topic[topic-index=0-0]").trigger("click");
     </script>
 
   </body>
