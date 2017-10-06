@@ -54,30 +54,48 @@
         margin: 5px;
       }
 
+      .tooltip-inner {
+        white-space:pre-wrap;
+        max-width: 300px;
+      }
+
+      .footer {
+        margin-bottom: 20px;
+      }
+
       /*modal*/
       #choose-topic-modal .modal-body .statistic-show-container {
         border-right: 1px solid grey;
       }
 
       #choose-topic-modal .modal-body .statistic-choice {
-        margin-top: 64px;
+        margin-top: 10px;
       }
 
       #choose-topic-modal .link-footer {
         margin-top: 15px;
       }
+
+
     </style>
   </head>
 
   <body>
     <div class="container">
-      <h3>Software Engineer Knowledge Area</h3>
+      <h3>Để trở thành một Software Engineer giỏi cần phải học hỏi những gì?</h3>
       <p>
-        Dựa theo kinh nghiệm cá nhân, một bạn CTO tổng hợp những mảng kiến thức cần thiết dựa trên kinh nghiệm của mình.
-        Các bạn thử đánh dấu xem mình nắm được bao nhiêu trong những mảng kiến thức này?
+        Đây là 1 biểu đồ các kiến thức nền tảng (fundamentals) mà một bạn Senior Software Engineer tổng quát ra được, nhằm giúp các bạn định vị tốt hơn những điều các bạn đang có/cần bổ sung.</p>
 
-        Đọc bài viết gốc ở đây: <a href="#">Link</a>
+      <p>Nửa trên là những kiến thức thực tế cần thiết khi đi làm, bao gồm hiểu công nghệ, hiểu quy trình phát triển phần mềm, và kĩ thuật lập trình (clean coding, code refactoring, vv)</p>
+
+
+      <p>Nửa dưới là những kiến thức gốc/computer science mà các bạn cần nắm. Cần lưu ý là mình muốn nhấn mạnh tầm quan trọng của "Technical Framework of Thinking", hay 1 cách khác là tư duy problem solving, tư duy system design. Tư duy này là khả năng kết nối những kiến thức lẻ độc lập (lego blocks) mà các bạn học được bên dưới với nhau để đưa ra hướng giải quyết vấn đề.</p>
+
+      <p>
+        <a href="https://engineering.grokking.org/ki-su-phan-mem-software-engineer-gioi-thi-phai-nhu-the-nao/">More</a>
       </p>
+
+      <h3>Vậy bạn đã nắm vững bao nhiêu mảng kiến thức trong sơ đồ dưới đây?</h3>
     </div>
 
     <div class="container vote-container">
@@ -97,32 +115,27 @@
       </div>
     </div>
 
+    <div class="footer">
+
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="choose-topic-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Góp ý</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
             <div class="container">
+              <div class="row question">
+              Bạn đã nắm vững về  <span class="topic-name"></span>  đến đâu?
+              </div>
               <div class="row">
-                <div class="col-sm-6 statistic-show-container">
-                  <p>
-                    Kết quả đánh giá từ cộng đồng
-                  </p>
-                  <ul class="statistic-show-data">
-                    <li>Chưa biết về kỹ năng này: <span skill-level=0>1</span> </li>
-                    <li>Đã biết về nó, nhưng chưa dùng bao giờ: <span skill-level=1>1</span> </li>
-                    <li>Đã làm qua, nhưng chưa thành thạo: <span skill-level=2>1</span> </li>
-                    <li>I grokked this: <span skill-level=3>1</span> </li>
-                  </ul>
-                </div>
-                <div class="col-sm-6 statistic-choice">
+                <div class="col-sm-12 statistic-choice">
                   <div class="form-check">
                     <label class="form-check-label">
                       <input class="form-check-input" type="radio" name="statistic-choice" id="statistic-choice-0" value="level 0" checked>
@@ -152,14 +165,14 @@
 
               <div class="row link-footer">
                 <div class="col-xl-12">
-                  Để nâng cao kiến thức về mảng này, bạn có thể tham gia tại đây: <a href="#">Link</a>
+                  Để nâng cao kiến thức về mảng này, bạn có thể tham khảo: <a href="#" target="_blank">Link</a>
                 </div>
               </div>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-primary">Submit</button>
           </div>
         </div>
       </div>
@@ -175,31 +188,50 @@
 
       // Render area
       var renderArea = function(areaId, data, dataIndex) {
-        topicData = data["topics"]
+        topicData = data["topics"];
+
         var area = d3.select(".vote-container")
-                                      .select(".area#" + areaId)
-                                      .append("div").attr("class", "title").text(data["name"])
-                                      .append("div").attr("class", "body-wrapper row")
-                                      .selectAll(".topic")
-                                      .data(topicData);
+                      .select(".area#" + areaId)
+                      .append("div").attr("class", "title").text(data["name"])
+                      .append("div").attr("class", "body-wrapper row")
+                      .selectAll(".topic")
+                      .data(topicData);
 
             area.enter().append("div")
                         .attr("class", "topic col-sm-4")
                         .attr("topic-index", function(d, i) {   // use this index to pour data to statistic modal
                           return dataIndex + '-' + i;
                         })
+                        .attr("title", function(d,i) {
+                          // show statistic's text
+                          var t = "<b>Kết quả tham khảo từ cộng đồng</b>\n\n";
+                          t += "Chưa biết về kỹ năng này: " + d.statistic.level_0 + " người\n";
+                          t += "Đã biết về nó, nhưng chưa dùng bao giờ: " + d.statistic.level_1 + " người\n";
+                          t += "Đã làm qua, nhưng chưa thành thạo: " + d.statistic.level_2 + " người\n";
+                          t += "I grokked this: " + d.statistic.level_3 + " người\n";
+
+                          return t;
+                        })   
                         .text(function(d) { return d.name; });
       }
 
       // render Topic
-      var renderTopic = function() {
-        // Click on topics
+      var addTopicsClickEvent = function() {
+
         $(".topic").on('click', function() {
           // open statistic modal
           $modal.modal("show", this);
 
           // highlight
           $(this).addClass('chosen');
+        });
+
+        $(".topic").on('mouseenter', function() {
+          $(this).tooltip('show');
+        });
+
+         $(".topic").on('mouseleave', function() {
+          // $(this).tooltip('hide');
         });
       }
 
@@ -211,27 +243,26 @@
           renderArea(areaData["id"], areaData, index);
         });
 
-        renderTopic();
+        addTopicsClickEvent();
       })
       .fail(function(a, b, c) {
         alert("error");
       })
 
-
-
-
       // Display modal
       var renderModal = function(areaData, topicData) {
         // render title
-        $modal.find(".modal-title").html(areaData["name"] + " > " + topicData["name"])
+        // $modal.find(".modal-title").html(areaData["name"] + " > " + topicData["name"]);
+        $modal.find(".question").text("Bạn đã nắm vững về " + topicData["name"] + " đến đâu?");
+        $modal.find("a").attr("href", topicData["link"]);
 
         // render statistic data
-        statisticData = topicData["statistic"];
-        statisticDataSection = $modal.find(".statistic-show-container .statistic-show-data")
-        statisticDataSection.find("span[skill-level=0]").html(statisticData['level_0']);
-        statisticDataSection.find("span[skill-level=1]").html(statisticData['level_1']);
-        statisticDataSection.find("span[skill-level=2]").html(statisticData['level_2']);
-        statisticDataSection.find("span[skill-level=3]").html(statisticData['level_3']);
+        // statisticData = topicData["statistic"];
+        // statisticDataSection = $modal.find(".statistic-show-container .statistic-show-data")
+        // statisticDataSection.find("span[skill-level=0]").html(statisticData['level_0']);
+        // statisticDataSection.find("span[skill-level=1]").html(statisticData['level_1']);
+        // statisticDataSection.find("span[skill-level=2]").html(statisticData['level_2']);
+        // statisticDataSection.find("span[skill-level=3]").html(statisticData['level_3']);
 
         // render statistic choice
       };
