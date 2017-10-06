@@ -246,16 +246,12 @@
       // Fetch areas from api
       var xhr = $.get('mock_data.json', function(d, status, xhr) {
 
-        console.log(d);
         // Render areas
         window.data = d["areas"];
         $.each(window.data, function(index, areaData) {
           renderArea(areaData["id"], areaData, index);
-
-          console.log('bar');
         });
 
-        console.log('foo');
         addTopicsClickEvent();
       })
       .fail(function(a, b, c) {
@@ -267,7 +263,7 @@
         // render title
         // $modal.find(".modal-title").html(areaData["name"] + " > " + topicData["name"]);
         $modal.find(".question").text("Bạn đã nắm vững về " + topicData["name"] + " đến đâu?");
-        $modal.find("a").attr("href", topicData["link"]);
+        $modal.find("a").attr("href", topicData["link"] + "?utm_source=map&utm_term=" + topicData["name"]);
 
         // render statistic data
         // statisticData = topicData["statistic"];
