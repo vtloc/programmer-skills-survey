@@ -236,7 +236,7 @@
       }
 
       // Fetch areas from api
-      var xhr = $.get('http://private-a54a7-semap.apiary-mock.com/map', function(d, status, xhr) {
+      var xhr = $.get('https://private-a54a7-semap.apiary-mock.com/map', function(d, status, xhr) {
         // Render areas
         window.data = d["areas"];
         $.each(window.data, function(index, areaData) {
