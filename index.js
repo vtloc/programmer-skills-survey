@@ -68,11 +68,25 @@ var renderArea = function(areaId, data) {
 	updateAreaTopics(areaId, topicData);
 }
 
-// render Topic
+// render popover
+var $popover = $("#popover")
+
+var renderPopover = function(topic) {
+	$popover.find("input[name='vote'][value='" + getTopicCurrentLevel(topic.id) + "']").prop("checked", true);
+
+	var link = (!!topic["link"] ? topic.link : "https://engineering.grokking.org/");
+	$popover.find("a.topic-link").attr("href", link);
+}
+
+var rebindVoteEvent = function(afterVote) {
+	$("input[name='vote']").unbind("click");
+	$("input[name='vote']").click(afterVote);
+}
+
 var addTopicsClickEvent = function() {
 	$(".topic").popover({
 		html: true,
-    content: $('#popover')
+    content: $popover
   });
 
 	$(".topic").on('click', function() {
@@ -81,19 +95,18 @@ var addTopicsClickEvent = function() {
 	  var areaId = $(this).attr("area-id");
 	  var topicId = $(this).attr("topic-id");
 
-	  $("input[name='vote'][value='" + getTopicCurrentLevel(topicId) + "']").prop("checked", true);
+		topics = window.areas[areaId].topics
+		topic = topics[topics.map(function(topic) {return topic.id;}).indexOf(topicId)];
+	  renderPopover(topic);
 
 	  var _this = this;
-
-	  $("input[name='vote']").unbind("click");
-	  $("input[name='vote']").click(function() {
-			console.log(topicId, " updated");
+	  rebindVoteEvent(function() {
 			localStorage.setItem(topicId, $(this).val());
 			$(_this).popover('hide');
 
 			// Re-render area topics
 			updateAreaTopics(areaId, topics);
-		});
+		})
 	});
 
 	$(".topic").on('mouseenter', function() {

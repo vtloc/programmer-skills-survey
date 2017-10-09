@@ -2,14 +2,13 @@
   {
     "id": "postgre",
     "name": "Postgre",
-    "area": "area-technologies",
-    "link": "https://engineering.grokking.org/"
+    "area": "area-technologies"
   },
   {
     "id": "cassandra",
     "name": "Cassandra",
     "area": "area-technologies",
-    "link": "https://engineering.grokking.org/"
+    "link": "https://google.com/"
   },
   {
     "id": "hive",
