@@ -26,7 +26,7 @@ var updateAreaTopics = function(areaId, topicData) {
 								 return d.area;
 							 })
 							 .attr("data-trigger","focus")
-							 .attr("data-tabindex", 0)
+							 .attr("tabindex", 0)		// this prop is required to make popover trigger by focus
 							 .attr("title", function(d,i) {
 								 var t = "";
 								 return t;
@@ -47,6 +47,7 @@ var updateAreaTopics = function(areaId, topicData) {
                 	return d.area;
                 })
                 .attr("data-trigger","focus")
+								.attr("tabindex", 0)		// this prop is required to make popover trigger by focus
                 .attr("title", function(d,i) {
                 	var t = "";
                   return t;
@@ -91,7 +92,6 @@ var addTopicsClickEvent = function() {
   });
 
 	$(".topic").on('click', function() {
-		$(".topic").popover('hide');	// temporary fix when clicking topic while another popover is shown
 	  $(this).popover('show');
 
 	  var areaId = $(this).attr("area-id");

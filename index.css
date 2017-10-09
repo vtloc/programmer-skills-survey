@@ -80,3 +80,8 @@
 #choose-topic-modal .link-footer {
   margin-top: 15px;
 }
+
+/*topic popover*/
+.popover-wrapper {
+  display: none;
+}
