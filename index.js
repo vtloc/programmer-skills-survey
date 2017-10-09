@@ -25,8 +25,8 @@ var updateAreaTopics = function(areaId, topicData) {
 							 .attr("area-id", function(d, i) {
 								 return d.area;
 							 })
-							 .attr("data-toggle", "popover")
 							 .attr("data-trigger","focus")
+							 .attr("data-tabindex", 0)
 							 .attr("title", function(d,i) {
 								 var t = "";
 								 return t;
@@ -46,7 +46,6 @@ var updateAreaTopics = function(areaId, topicData) {
                 .attr("area-id", function(d, i) {
                 	return d.area;
                 })
-                .attr("data-toggle", "popover")
                 .attr("data-trigger","focus")
                 .attr("title", function(d,i) {
                 	var t = "";
@@ -86,10 +85,13 @@ var rebindVoteEvent = function(afterVote) {
 var addTopicsClickEvent = function() {
 	$(".topic").popover({
 		html: true,
+		trigger: "focus",
+		container: "body",
     content: $popover
   });
 
 	$(".topic").on('click', function() {
+		$(".topic").popover('hide');	// temporary fix when clicking topic while another popover is shown
 	  $(this).popover('show');
 
 	  var areaId = $(this).attr("area-id");
