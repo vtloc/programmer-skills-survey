@@ -1,0 +1,448 @@
+[
+        
+    {
+        "id": "area-technologies",
+        "name": "Technologies"
+    },
+    {
+        "id": "area-technical-framework-of-thinking",
+        "name": "Technical Framework Of Thinking",
+        "topics": [
+            {
+                "name": "Critical Thinking Skills",
+                "size": 1,
+                "statistic": {
+                  "level_0": 123,
+                  "level_1": 342,
+                  "level_2": 3511,
+                  "level_3": 23
+                },
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Problem Solving Skills",
+                "size": 1,
+                "statistic": {
+                  "level_0": 123,
+                  "level_1": 342,
+                  "level_2": 3511,
+                  "level_3": 23
+                },
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "System Design Skills",
+                "size": 1,
+                "statistic": {
+                  "level_0": 123,
+                  "level_1": 342,
+                  "level_2": 3511,
+                  "level_3": 23
+                },
+                "link": "https://engineering.grokking.org/"
+            }
+        ]
+    },
+
+    {
+        "id": "area-software-design",
+        "name": "Software Design",
+        "topics": [
+          {
+            "name": "Concurrency",
+            "size": 1,
+            "statistic": {},
+            "link": "https://engineering.grokking.org/"
+          },
+          {
+            "name": "Control and Handling of Events",
+            "size": 1,
+            "statistic": {},
+            "link": "https://engineering.grokking.org/"
+          },
+          {
+            "name": "Data Persistence",
+            "size": 1,
+            "statistic": {},
+            "link": "https://engineering.grokking.org/"
+          },
+          {
+            "name": "Distribution of Components",
+            "size": 1,
+            "statistic": {},
+            "link": "https://engineering.grokking.org/"
+          },
+          {
+            "name": "Error and Exception Handling and Fault Tolerance",
+            "size": 1,
+            "statistic": {},
+            "link": "https://engineering.grokking.org/"
+          },
+          {
+            "name": "Interaction and Presentation",
+            "size": 1,
+            "statistic": {},
+            "link": "https://engineering.grokking.org/"
+          },
+          {
+            "name": "Security",
+            "size": 1,
+            "statistic": {},
+            "link": "https://engineering.grokking.org/"
+          },
+          {
+            "name": "Software Structure and Architecture",
+            "size": 1,
+            "statistic": {},
+            "link": "https://engineering.grokking.org/"
+          },
+          {
+            "name": "Software Design Quality Analysis and Evaluation",
+            "size": 1,
+            "statistic": {},
+            "link": "https://engineering.grokking.org/"
+          },
+          {
+            "name": "Function-Oriented (Structured) Design",
+            "size": 1,
+            "statistic": {},
+            "link": "https://engineering.grokking.org/"
+          },
+          {
+            "name": "Object-Oriented Design",
+            "size": 1,
+            "statistic": {},
+            "link": "https://engineering.grokking.org/"
+          },
+          {
+            "name": "Data Structure-Centered Design",
+            "size": 1,
+            "statistic": {},
+            "link": "https://engineering.grokking.org/"
+          },
+          {
+            "name": "Components-Based Design",
+            "size": 1,
+            "statistic": {},
+            "link": "https://engineering.grokking.org/"
+          }
+        ]
+    },
+
+    {
+        "id": "area-software-requirements",
+        "name": "Software Requirements",
+        "topics": [
+            {
+                "name": "Requirements Process",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Requirements Elicitation",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Requirements Analysis",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Requirements Specification",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Requirements Validation",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            }
+        ]
+    },
+
+    {
+        "id": "area-engineering-foundation",
+        "name": "Engineering Foundation",
+        "topics": [
+            {
+                "name": "Empirical Methods and Experimental Techniques",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Statistical Analysis",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Measurement",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Engineering Design",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Modeling, Simulation, and Prototyping",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Standards",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            }
+        ]
+    },
+    {
+        "id": "area-computing-foundation",
+        "name": "Computing Foundation",
+        "topics": [
+            {
+                "name": "Problem Solving Techniques",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Abstraction",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Programming Fundamentals",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Programming Language Basics",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Debugging Tools and Techniques",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Data Structure and Representation",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Algorithm and Complexity",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Basic Concepts of an System",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Computer Organization",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Compiler Basics",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Operating System Basics",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Database Basics and Data Management",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Network Communication Basics",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Parallel and Distributed Computing",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Basic User Human Factors",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Basic Developer Human Factors",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Secure Software Development and Maintenance",
+                "size": 1,
+                "statistic": {},
+                "link": "https://engineering.grokking.org/"
+            }
+            
+            
+        ]
+    },
+    {
+        "id": "area-mathematics-foundation",
+        "name": "Mathematics Foundation",
+        "topics": [
+            {
+                "name": "Set, Relations, Functions",
+                "size": 1,
+                "statistic": {
+                  "level_0": 0,
+                  "level_1": 0,
+                  "level_2": 0,
+                  "level_3": 0
+                },
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Basic Logic",
+                "size": 1,
+                "statistic": {
+                  "level_0": 0,
+                  "level_1": 0,
+                  "level_2": 0,
+                  "level_3": 0
+                },
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Proof Techniques",
+                "size": 1,
+                "statistic": {
+                  "level_0": 0,
+                  "level_1": 0,
+                  "level_2": 0,
+                  "level_3": 0
+                },
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Basics of Counting",
+                "size": 1,
+                "statistic": {
+                  "level_0": 0,
+                  "level_1": 0,
+                  "level_2": 0,
+                  "level_3": 0
+                },
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Graphs and Trees",
+                "size": 1,
+                "statistic": {
+                  "level_0": 0,
+                  "level_1": 0,
+                  "level_2": 0,
+                  "level_3": 0
+                },
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Discrete Probability",
+                "size": 1,
+                "statistic": {
+                  "level_0": 0,
+                  "level_1": 0,
+                  "level_2": 0,
+                  "level_3": 0
+                },
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Finite State Machines",
+                "size": 1,
+                "statistic": {
+                  "level_0": 0,
+                  "level_1": 0,
+                  "level_2": 0,
+                  "level_3": 0
+                },
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Grammars",
+                "size": 1,
+                "statistic": {
+                  "level_0": 0,
+                  "level_1": 0,
+                  "level_2": 0,
+                  "level_3": 0
+                },
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Numerical Precision, Accuracy, and Errors",
+                "size": 1,
+                "statistic": {
+                  "level_0": 0,
+                  "level_1": 0,
+                  "level_2": 0,
+                  "level_3": 0
+                },
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Number Theory",
+                "size": 1,
+                "statistic": {
+                  "level_0": 0,
+                  "level_1": 0,
+                  "level_2": 0,
+                  "level_3": 0
+                },
+                "link": "https://engineering.grokking.org/"
+            },
+            {
+                "name": "Algebraic Structures",
+                "size": 1,
+                "statistic": {
+                  "level_0": 0,
+                  "level_1": 0,
+                  "level_2": 0,
+                  "level_3": 0
+                },
+                "link": "https://engineering.grokking.org/"
+            }
+        ]
+    }
+]

@@ -1,0 +1,86 @@
+.area-group {
+  margin-top: 0px;
+}
+
+.area {
+  border: 1px solid white;
+  background-color: #6aaff9;
+  font-weight: bold;
+  text-align: center;
+}
+
+.area .title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.topic {
+  border: 1px solid;
+  border-radius: 5px;
+  background-color: yellow;
+  margin: 2px;
+  max-width: calc(100% / 3 - 4px);
+  min-height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  font-size: 10px;
+  color: black;
+
+  cursor: pointer;
+}
+
+.topic.chosen {
+  /*color: white;*/
+}
+
+.topic.level_0 {
+    background-color: rgba(255,255,255, 255);
+}
+
+.topic.level_1 {
+  background-color: rgba(255,255,170, 255);
+}
+
+.topic.level_2 {
+    background-color: rgba(255,255,100, 255);
+}
+
+.topic.level_3 {
+    background-color: rgba(255,255,0, 255);
+}
+
+.body-wrapper {
+  margin: 5px;
+}
+
+.tooltip-inner {
+  white-space:pre-wrap;
+  max-width: 300px;
+}
+
+.footer {
+  margin-bottom: 20px;
+}
+
+/*styling*/
+.color-green {
+  background-color: green;
+}
+
+/*modal*/
+#choose-topic-modal .modal-body .statistic-show-container {
+  border-right: 1px solid grey;
+}
+
+#choose-topic-modal .modal-body .statistic-choice {
+  margin-top: 10px;
+}
+
+#choose-topic-modal .link-footer {
+  margin-top: 15px;
+}

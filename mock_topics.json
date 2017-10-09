@@ -1,0 +1,26 @@
+[
+  {
+    "id": "postgre",
+    "name": "Postgre",
+    "area": "area-technologies",
+    "link": "https://engineering.grokking.org/"
+  },
+  {
+    "id": "cassandra",
+    "name": "Cassandra",
+    "area": "area-technologies",
+    "link": "https://engineering.grokking.org/"
+  },
+  {
+    "id": "hive",
+    "name": "Hive",
+    "area": "area-technologies",
+    "link": "https://engineering.grokking.org/"
+  },
+  {
+    "id": "amazons3",
+    "name": "Amazon S3",
+    "area": "area-technologies",
+    "link": "https://engineering.grokking.org/"
+  }
+]

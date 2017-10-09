@@ -3,86 +3,13 @@
   <head>
     <title>Grokking</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <style media="screen">
-      .area-group {
-        margin-top: 0px;
-      }
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
-      .area {
-        border: 1px solid white;
-        background-color: #6aaff9;
-        font-weight: bold;
-        text-align: center;
-      }
-
-      .area .title {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        color: white;
-      }
-
-      .topic {
-        border: 1px solid;
-        border-radius: 5px;
-        background-color: yellow;
-        margin: 2px;
-        max-width: calc(100% / 3 - 4px);
-        min-height: 50px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-
-        font-size: 10px;
-        color: black;
-
-        cursor: pointer;
-      }
-
-      .topic.chosen {
-        background-color: #2257ce;
-        color: white;
-      }
-
-      .body-wrapper {
-        margin: 5px;
-      }
-
-      .tooltip-inner {
-        white-space:pre-wrap;
-        max-width: 300px;
-      }
-
-      .footer {
-        margin-bottom: 20px;
-      }
-
-      /*styling*/
-      .color-green {
-        background-color: green;
-      }
-
-      /*modal*/
-      #choose-topic-modal .modal-body .statistic-show-container {
-        border-right: 1px solid grey;
-      }
-
-      #choose-topic-modal .modal-body .statistic-choice {
-        margin-top: 10px;
-      }
-
-      #choose-topic-modal .link-footer {
-        margin-top: 15px;
-      }
-
-
-    </style>
+    <link rel="stylesheet" href="index.css" />
+      
   </head>
 
   <body>
@@ -140,7 +67,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Góp ý</h5>
+            <h5 class="modal-title" id="">Bạn hiểu về topic này đến đâu?</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -148,32 +75,32 @@
           <div class="modal-body">
             <div class="container">
               <div class="row question">
-              Bạn đã nắm vững về  <span class="topic-name"></span>  đến đâu?
+              Bạn đã nắm vững về  <span class="topic-name"></span> đến đâu?
               </div>
               <div class="row">
                 <div class="col-sm-12 statistic-choice">
                   <div class="form-check">
                     <label class="form-check-label">
-                      <input class="form-check-input" type="radio" name="statistic-choice" id="statistic-choice-0" value="level 0" checked>
-                      Chưa biết về kỹ năng này
+                      <input class="form-check-input" type="radio" name="vote" id="statistic-choice-0" value="0" checked>
+                      Chưa biết
                     </label>
                   </div>
                   <div class="form-check">
                     <label class="form-check-label">
-                      <input class="form-check-input" type="radio" name="statistic-choice" id="statistic-choice-1" value="level 1">
+                      <input class="form-check-input" type="radio" name="vote" id="statistic-choice-1" value="1">
                       Đã biết về nó, nhưng chưa dùng bao giờ
                     </label>
                   </div>
                   <div class="form-check">
                     <label class="form-check-label">
-                      <input class="form-check-input" type="radio" name="statistic-choice" id="statistic-choice-2" value="level 2">
+                      <input class="form-check-input" type="radio" name="vote" id="statistic-choice-2" value="2">
                       Đã làm qua, nhưng chưa thành thạo
                     </label>
                   </div>
                   <div class="form-check">
                     <label class="form-check-label">
-                      <input class="form-check-input" type="radio" name="statistic-choice" id="statistic-choice-3" value="level 3">
-                      I grokked this
+                      <input class="form-check-input" type="radio" name="vote" id="statistic-choice-3" value="3">
+                      Rất thành thạo topic này
                     </label>
                   </div>
                 </div>
@@ -188,9 +115,36 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Submit</button>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Popover -->
+    <div id="popover">
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="vote" id="statistic-choice-0" value="0" checked>
+          Chưa biết
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="vote" id="statistic-choice-1" value="1">
+          Đã biết về nó, nhưng chưa dùng bao giờ
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="vote" id="statistic-choice-2" value="2">
+          Đã làm qua, nhưng chưa thành thạo
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="vote" id="statistic-choice-3" value="3">
+          Rất thành thạo topic này
+        </label>
       </div>
     </div>
 
@@ -199,99 +153,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
 
-    <script type="text/javascript">
-      var $modal = $("#choose-topic-modal");
-
-      // Render area
-      var renderArea = function(areaId, data, dataIndex) {
-        topicData = data["topics"];
-
-        var area = d3.select(".vote-container")
-                      .select(".area#" + areaId)
-                      .append("div").attr("class", "title").text(data["name"])
-                      .append("div").attr("class", "body-wrapper row")
-                      .selectAll(".topic")
-                      .data(topicData);
-
-            area.enter().append("div")
-                        .attr("class", "topic col-sm-4")
-                        .attr("topic-index", function(d, i) {   // use this index to pour data to statistic modal
-                          return dataIndex + '-' + i;
-                        })
-                        .attr("title", function(d,i) {
-
-                          // show statistic's text in tooltip
-                          var t = "Kết quả tham khảo từ cộng đồng\n\n";
-                          t += "Chưa biết về kỹ năng này: " + (d.statistic.level_0 || 0) + " người\n";
-                          t += "Đã biết về nó, nhưng chưa dùng bao giờ: " + (d.statistic.level_1 || 0) + " người\n";
-                          t += "Đã làm qua, nhưng chưa thành thạo: " + (d.statistic.level_2 || 0) + " người\n";
-                          t += "I grokked this: " + (d.statistic.level_3 || 0) + " người\n";
-
-                          return t;
-                        })   
-                        .text(function(d) { return d.name; });
-      }
-
-      // render Topic
-      var addTopicsClickEvent = function() {
-
-        $(".topic").on('click', function() {
-          // open statistic modal
-          $modal.modal("show", this);
-
-          // highlight
-          $(this).addClass('chosen');
-        });
-
-        $(".topic").on('mouseenter', function() {
-          $(this).tooltip('show');
-        });
-
-         $(".topic").on('mouseleave', function() {
-            $(this).tooltip('hide'); 
-        });
-      }
-
-      // Fetch areas from api
-      var xhr = $.get('mock_data.json', function(d, status, xhr) {
-
-        // Render areas
-        window.data = d["areas"];
-        $.each(window.data, function(index, areaData) {
-          renderArea(areaData["id"], areaData, index);
-        });
-
-        addTopicsClickEvent();
-      })
-      .fail(function(a, b, c) {
-        console.log(a,b,c);
-      })
-
-      // Display modal
-      var renderModal = function(areaData, topicData) {
-        // render title
-        // $modal.find(".modal-title").html(areaData["name"] + " > " + topicData["name"]);
-        $modal.find(".question").text("Bạn đã nắm vững về " + topicData["name"] + " đến đâu?");
-        $modal.find("a").attr("href", topicData["link"] + "?utm_source=map&utm_term=" + topicData["name"]);
-
-        // render statistic data
-        // statisticData = topicData["statistic"];
-        // statisticDataSection = $modal.find(".statistic-show-container .statistic-show-data")
-        // statisticDataSection.find("span[skill-level=0]").html(statisticData['level_0']);
-        // statisticDataSection.find("span[skill-level=1]").html(statisticData['level_1']);
-        // statisticDataSection.find("span[skill-level=2]").html(statisticData['level_2']);
-        // statisticDataSection.find("span[skill-level=3]").html(statisticData['level_3']);
-
-        // render statistic choice
-      };
-
-      $modal.on('show.bs.modal', function(e) {
-        var [areaIndex, topicIndex] = $(e.relatedTarget).attr("topic-index").split('-');
-        areaData = window.data[areaIndex];
-        topicData = data[areaIndex]["topics"][topicIndex];
-        renderModal(areaData, topicData);
-      });
-    </script>
+    <script type="text/javascript" src="index.js"></script>
 
   </body>
 </html>
