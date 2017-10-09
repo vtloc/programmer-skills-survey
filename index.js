@@ -5,23 +5,39 @@ var getTopicCurrentLevel = function(topicId) {
 	return parseInt(localStorage.getItem(topicId));
 }
 
-// Render area
-var renderArea = function(areaId, data) {
-	topicData = data["topics"];
+// Render area's topics
+var updateAreaTopics = function(areaId, topicData) {
+	// Join topics components with its data
+	var topics = d3.select(".vote-container")
+    					 .select(".area#" + areaId)
+							 .select(".body-wrapper")
+							 .selectAll(".topic")
+							 .data(topicData)
+							 .attr("class", function(d) {
+								 var classString = "topic col-sm-4";
+								 classString += " " + "level_" + getTopicCurrentLevel(d.id);
 
-	var area = d3.select(".vote-container")
-              .select(".area#" + areaId)
-              .append("div").attr("class", "title").text(data["name"])
-              .append("div").attr("class", "body-wrapper row")
-              .selectAll(".topic")
-              .data(topicData);
+								 return classString;
+							 })
+							 .attr("topic-id", function(d, i) {   // use this index to pour data to statistic modal
+								 return d.id
+							 })
+							 .attr("area-id", function(d, i) {
+								 return d.area;
+							 })
+							 .attr("data-toggle", "popover")
+							 .attr("data-trigger","focus")
+							 .attr("title", function(d,i) {
+								 var t = "";
+								 return t;
+							 })
+							 .text(function(d) { return d.name; });
 
-    area.enter().append("div")
+  topics.enter().append("div")
                 .attr("class", function(d) {
                 	var classString = "topic col-sm-4";
-
                 	classString += " " + "level_" + getTopicCurrentLevel(d.id);
-                	
+
                 	return classString;
                 })
                 .attr("topic-id", function(d, i) {   // use this index to pour data to statistic modal
@@ -34,28 +50,30 @@ var renderArea = function(areaId, data) {
                 .attr("data-trigger","focus")
                 .attr("title", function(d,i) {
                 	var t = "";
-
-      //           	if(d.statistic)
-      //           	{
-						// // show statistic's text in tooltip
-		    //             t = "Kết quả tham khảo từ cộng đồng\n\n";
-		    //             t += "Chưa biết về kỹ năng này: " + (d.statistic.level_0 || 0) + " người\n";
-		    //             t += "Đã biết về nó, nhưng chưa dùng bao giờ: " + (d.statistic.level_1 || 0) + " người\n";
-		    //             t += "Đã làm qua, nhưng chưa thành thạo: " + (d.statistic.level_2 || 0) + " người\n";
-		    //             t += "I grokked this: " + (d.statistic.level_3 || 0) + " người\n";
-      //           	}
-
                   return t;
-                })   
+                })
                 .text(function(d) { return d.name; });
+};
+
+// render area
+var renderArea = function(areaId, data) {
+	topicData = data["topics"];
+
+	// Add area title
+	d3.select(".vote-container")
+    .select(".area#" + areaId)
+    .append("div").attr("class", "title").text(data["name"])
+    .append("div").attr("class", "body-wrapper row")
+
+	updateAreaTopics(areaId, topicData);
 }
 
 // render Topic
 var addTopicsClickEvent = function() {
 	$(".topic").popover({
 		html: true,
-        content: $('#popover')
-    });
+    content: $('#popover')
+  });
 
 	$(".topic").on('click', function() {
 	  $(this).popover('show');
@@ -72,14 +90,14 @@ var addTopicsClickEvent = function() {
 			console.log(topicId, " updated");
 			localStorage.setItem(topicId, $(this).val());
 			$(_this).popover('hide');
-		});
 
-	  // highlight
-	  $(this).addClass('chosen');
+			// Re-render area topics
+			updateAreaTopics(areaId, topics);
+		});
 	});
 
 	$(".topic").on('mouseenter', function() {
-	  
+
 	});
 }
 
@@ -89,51 +107,52 @@ window.topics = [];
 
 
 var downloadData = function() {
+	// Get areas
 	$.ajax({
 		url: "mock_areas.json",
 	    type: "GET",
 	    crossDomain: true,
 	    dataType: "json",
 	    success: function (response) {
-	    	console.log(response);
-	        var d = response;
+	    	console.log("get areas: ", response);
+	      var d = response;
 
-	        $.each(d, function(index, areaData) {
-				var areaId = areaData.id;
+	      $.each(d, function(index, areaData) {
+					var areaId = areaData.id;
+					window.areas[areaId] = areaData;
+				});
 
-				window.areas[areaId] = areaData;
-			});
-
-			$.ajax({
-
-				url: "mock_topics.json",
+				// Get topic
+				$.ajax({
+					url: "mock_topics.json",
 			    type: "GET",
 			    crossDomain: true,
 			    dataType: "json",
 			    success: function (response) {
-			        var d = response;
+						console.log("get topic: ", response);
+		        var d = response;
 
-			        window.topics = d;
+		        window.topics = d;
 
-					$.each(window.topics, function(index, topicData) {
-					  var area = window.areas[topicData.area];
+						$.each(window.topics, function(index, topicData) {
+							var area = window.areas[topicData.area];
 
-					  if(area)
-					  {
-					  	if(!area.topics)
-					  		area.topics = [];
+						  if(area)
+						  {
+						  	if(!area.topics)
+						  		area.topics = [];
 
-					  	area.topics.push(topicData);
-					  }
-					});
+								area.topics.push(topicData);
+						  }
+						});
 
-					$.each(window.areas, function(key, areaData) {
-						console.log(areaData);
-					  renderArea(areaData["id"], areaData, key);
-					});
+						$.each(window.areas, function(key, areaData) {
+							console.log(areaData);
+					  	renderArea(areaData["id"], areaData);
+						});
 
-					addTopicsClickEvent();
-				},
+						addTopicsClickEvent();
+					},
 			    error: function (xhr, status) {
 			        console.log(xhr, status);
 			    }
@@ -174,9 +193,8 @@ var renderModal = function(topicData) {
 // }
 
 /**
-MAIN PROGRAM	
+MAIN PROGRAM
 **/
 
 downloadData();
 // initModal();
-
